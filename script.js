@@ -36,3 +36,6 @@ const c = arr[2];
 const [j, k, l] = arr;
 console.log(j, k, l);
 console.log(arr);
+
+let [main, , , side] = restaurant.categories;
+console.log(main, side);
