@@ -55,3 +55,7 @@ console.log(mainMeal, sideMeal);
 const nested = [5, 8, [4, 7]];
 const [d, , [e, f]] = nested;
 console.log(d, e, f);
+
+//settong default values for array destructing
+const [g = 1, h = 1, i = 1, m = 1] = [3, 9];
+console.log(g, h, i, m);
