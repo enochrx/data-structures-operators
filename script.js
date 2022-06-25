@@ -50,3 +50,8 @@ console.log(main, side);
 //receiving 2 return values from a function
 const [mainMeal, sideMeal] = restaurant.order(3, 1);
 console.log(mainMeal, sideMeal);
+
+//nested destructing
+const nested = [5, 8, [4, 7]];
+const [d, , [e, f]] = nested;
+console.log(d, e, f);
