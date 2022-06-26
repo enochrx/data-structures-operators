@@ -12,10 +12,6 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.starterMenu[mainIndex]];
-  },
-
   openingHours: {
     thu: {
       open: 12,
@@ -30,14 +26,31 @@ const restaurant = {
       close: 24,
     },
   },
+
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.starterMenu[mainIndex]];
+  },
+
+  //practical example
+  orderDelivery: function ({ address, time, mainIndex, starterIndex }) {
+    console.log(
+      `Hello, We got your order for ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} on the side, to be delivered by ${time} to ${address}, thanks for shopping with us.`
+    );
+  },
 };
 
+restaurant.orderDelivery({
+  address: '2, Raddington Close, Beachway, LA',
+  time: '3:00',
+  starterIndex: 3,
+  mainIndex: 1,
+});
 //////////////////////////////////////////////////
 //Destructing Array
 const arr = [2, 3, 4];
 const a = arr[0];
 const b = arr[1];
-const c = arr[2];
+const cg = arr[2];
 
 const [j, k, l] = arr;
 console.log(j, k, l);
@@ -88,5 +101,6 @@ console.log(ray, eno);
 
 //nested object for destructing
 const {
-  thu: { open, close },
+  thu: { open: o, close: c },
 } = openingHours;
+console.log(o, c);
