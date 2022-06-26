@@ -65,3 +65,16 @@ console.log(g, h, i, m);
 /////////////////////////////////////////////////
 //Destructing objects
 const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+//reassigning name to destructing object
+const {
+  name: restaurantName,
+  openingHours: hours,
+  mainMenu: course,
+} = restaurant;
+console.log(restaurantName, hours, course);
+
+//setting default values for object destructing
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
