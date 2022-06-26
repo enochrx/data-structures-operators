@@ -32,6 +32,8 @@ const restaurant = {
   },
 };
 
+//////////////////////////////////////////////////
+//Destructing Array
 const arr = [2, 3, 4];
 const a = arr[0];
 const b = arr[1];
@@ -56,6 +58,10 @@ const nested = [5, 8, [4, 7]];
 const [d, , [e, f]] = nested;
 console.log(d, e, f);
 
-//settong default values for array destructing
+//setting default values for array destructing
 const [g = 1, h = 1, i = 1, m = 1] = [3, 9];
 console.log(g, h, i, m);
+
+/////////////////////////////////////////////////
+//Destructing objects
+const { name, openingHours, categories } = restaurant;
