@@ -75,6 +75,18 @@ const {
 } = restaurant;
 console.log(restaurantName, hours, course);
 
-//setting default values for object destructing
+//setting default values with [] for object destructing`, which is very helpful when we do not have our data hard-coded and we need to fetch them from somewhere else like API etc
 const { menu = [], starterMenu: starters = [] } = restaurant;
 console.log(menu, starters);
+
+//Mutating variables
+let ray = 59;
+let eno = 54;
+const roj = { ray: 56, eno: 48 };
+({ ray, eno } = roj); //wrapped with parentheses
+console.log(ray, eno);
+
+//nested object for destructing
+const {
+  thu: { open, close },
+} = openingHours;
