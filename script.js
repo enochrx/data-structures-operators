@@ -37,6 +37,11 @@ const restaurant = {
       `Hello, We got your order for ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} on the side, to be delivered by ${time} to ${address}, thanks for shopping with us.`
     );
   },
+  pastaIngredients: function (ing1, ing2, ing3) {
+    console.log(
+      `Your order, Pasta was prepared with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
 };
 
 restaurant.orderDelivery({
@@ -104,3 +109,29 @@ const {
   thu: { open: o, close: c },
 } = openingHours;
 console.log(o, c);
+
+//Spread operator
+const arry = [4, 5, 6];
+const badWayArry = [2, 3, arry[0], arry[1], arry[2]]; //old way of merging arrays
+console.log(badWayArry);
+
+//New way of merging in ES6 is by using spread operator (...)
+const newArry = [2, 3, ...arry];
+console.log(newArry);
+
+//SPread operator is mostly used to get data separated by coma out of an array just like destructing and they do not create new variables but rather take all the element out of the arrray
+console.log(...newArry);
+
+//Use case -- 1. to copy arrays, 2. to merge arrays
+const categoriesCopy = [...restaurant.categories];
+console.log(categoriesCopy);
+const newSide = [...restaurant.starterMenu, 'Spinach'];
+console.log(newSide);
+const mergedMenu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(mergedMenu);
+
+//Spread operator actually works on all iterables which are all array, string, maps, sets but not objects and we can only use a spread operator only when building an array or when passing values into a function
+const str = 'Raynoch';
+const ltrs = [...str]; //an array of each alphabet in the name is created
+console.log(ltrs);
+console.log(...str);
