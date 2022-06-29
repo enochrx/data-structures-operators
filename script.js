@@ -37,9 +37,9 @@ const restaurant = {
       `Hello, We got your order for ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} on the side, to be delivered by ${time} to ${address}, thanks for shopping with us.`
     );
   },
-  pastaIngredients: function (ing1, ing2, ing3) {
+  pastaOrderIngredients: function (ing1, ing2, ing3) {
     console.log(
-      `Your order, Pasta was prepared with ${ing1}, ${ing2} and ${ing3}`
+      `The Pasta you ordered was prepared with ${ing1}, ${ing2} and ${ing3}`
     );
   },
 };
@@ -53,9 +53,9 @@ restaurant.orderDelivery({
 //////////////////////////////////////////////////
 //Destructing Array
 const arr = [2, 3, 4];
-const a = arr[0];
-const b = arr[1];
-const cg = arr[2];
+// const aa = arr[0];
+// const bi = arr[1];
+// const cg = arr[2];
 
 const [j, k, l] = arr;
 console.log(j, k, l);
@@ -135,3 +135,44 @@ const str = 'Raynoch';
 const ltrs = [...str]; //an array of each alphabet in the name is created
 console.log(ltrs);
 console.log(...str);
+
+// const ingredients = [
+//   prompt('Making Pasta!, Ingredient 1?'),
+//   prompt('Ingredient 2?'),
+//   prompt('Ingredient 3?'),
+// ];
+// console.log(ingredients);
+
+//we use Spread operator to call the pastaIngredient
+//restaurant.pastaOrderIngredients(...ingredients);
+
+//otherwise, we use the conventional way of writing out all the vslues in the array, which can be very strenuous esp when there's so much data in the array
+// restaurant.pastaOrderIngredients(
+//   ingredients[0],
+//   ingredients[1],
+//   ingredients[2]
+// );
+
+//Object
+const restaurantnew = { ...restaurant, foundedIn: 1991, Owner: 'Zanotti' };
+console.log(restaurantnew);
+
+//Rest Pattern; Is the opposite of spread operator, i.e they pack elements to firm an array while spread operator unpacks an array
+
+//Spread operator because it's on the RIGHT side of the assignment operator =
+
+const rig = [1, 2, 3, ...[5, 6]];
+
+//Rest pattern because it's on the LEFT side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
+
+const [, Bruschetta, ...otherMeal] = [
+  ...restaurant.starterMenu,
+  ...restaurant.mainMenu,
+];
+console.log(Bruschetta, otherMeal);
+
+//rest pattern for objects
+const { sat, ...weekdays } = { ...restaurant.openingHours };
+console.log(sat, weekdays);
