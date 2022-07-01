@@ -159,11 +159,11 @@ console.log(restaurantnew);
 
 //Rest Pattern; Is the opposite of spread operator, i.e they pack elements to firm an array while spread operator unpacks an array
 
-//Spread operator because it's on the RIGHT side of the assignment operator =
+//Spread operator because it's on the RIGHT side of the assignment operator = OR the side where the values are set
 
 const rig = [1, 2, 3, ...[5, 6]];
 
-//Rest pattern because it's on the LEFT side of =
+//Rest pattern because it's on the LEFT side of = OR the variable name side
 const [a, b, ...others] = [1, 2, 3, 4, 5];
 console.log(a, b, others);
 
@@ -176,3 +176,7 @@ console.log(Bruschetta, otherMeal);
 //rest pattern for objects
 const { sat, ...weekdays } = { ...restaurant.openingHours };
 console.log(sat, weekdays);
+
+//Short-circuiting,  using OR operator will return only truthy values
+console.log(3 || null);
+console.log(undefined || 'rainbow');
