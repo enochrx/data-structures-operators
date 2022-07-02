@@ -177,6 +177,25 @@ console.log(Bruschetta, otherMeal);
 const { sat, ...weekdays } = { ...restaurant.openingHours };
 console.log(sat, weekdays);
 
-//Short-circuiting,  using OR operator will return only truthy values
+//Short-circuiting,  using OR|| operator will return only truthy values
 console.log(3 || null);
 console.log(undefined || 'rainbow');
+
+restaurant.guestNumbr = 0;
+// const guests = restaurant.guestNumbr || 20;
+// console.log(guests);
+// const guest = restaurant.guestNumbr ? restaurant.guestNumbr : 21;
+// console.log(guest);
+//first truthy value is return in short-circuiting
+
+//Short-circuiting, using AND&& operator will return the first falsy value
+console.log(undefined && 'Ray');
+console.log(NaN && null);
+console.log('red' && 3);
+
+//Nullish coalescing operator '??' works with the idea of nullish values(Null & Undefined) rather than falsy values
+const guests = restaurant.guestNumbr || 20;
+console.log(guests);
+
+const correctGuestNo = restaurant.guestNumbr ?? 25;
+console.log(correctGuestNo);
