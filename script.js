@@ -119,7 +119,7 @@ console.log(badWayArry);
 const newArry = [2, 3, ...arry];
 console.log(newArry);
 
-//SPread operator is mostly used to get data separated by coma out of an array just like destructing and they do not create new variables but rather take all the element out of the arrray
+//Spread operator is mostly used to get data separated by coma out of an array just like destructing and they do not create new variables but rather take all the element out of the arrray
 console.log(...newArry);
 
 //Use case -- 1. to copy arrays, 2. to merge arrays
@@ -157,7 +157,7 @@ console.log(...str);
 const restaurantnew = { ...restaurant, foundedIn: 1991, Owner: 'Zanotti' };
 console.log(restaurantnew);
 
-//Rest Pattern; Is the opposite of spread operator, i.e they pack elements to firm an array while spread operator unpacks an array
+//Rest Pattern; Is the opposite of spread operator, i.e they pack elements to form an array while spread operator unpacks an array
 
 //Spread operator because it's on the RIGHT side of the assignment operator = OR the side where the values are set
 
@@ -199,3 +199,115 @@ console.log(guests);
 
 const correctGuestNo = restaurant.guestNumbr ?? 25;
 console.log(correctGuestNo);
+
+//Coding challenge #1
+/*We're building a football betting app (soccer for my American friends 😅)!
+Suppose we get data from a web service about a certain game ('game' variable on
+next page). In this challenge we're gonna work with that data.
+Your tasks:
+1. Create one player array for each team (variables 'players1' and
+'players2')
+2. The first player in any player array is the goalkeeper and the others are field
+players. For Bayern Munich (team 1) create one variable ('gk') with the
+goalkeeper's name, and one array ('fieldPlayers') with all the remaining 10
+field players
+3. Create an array 'allPlayers' containing all players of both teams (22
+players)
+4. During the game, Bayern Munich (team 1) used 3 substitute players. So create a
+new array ('players1Final') containing all the original team1 players plus
+'Thiago', 'Coutinho' and 'Perisic'
+5. Based on the game.odds object, create one variable for each odd (called
+'team1', 'x' and 'team2')
+6. Write a function ('printGoals') that receives an arbitrary number of player
+names (not an array) and prints each of them to the console, along with the
+number of goals that were scored in total (number of player names passed in)
+7. The team with the lower odd is more likely to win. Print to the console which
+team is more likely to win, without using an if/else statement or the ternary
+operator.
+Test data for 6.: First, use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'.
+Then, call the function again with players from game.scored. */
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+//Solution
+//Task 1
+const [...player1] = game.players[0];
+const [...player2] = game.players[1];
+const [players1, players2] = game.players;
+console.log(players1, players2);
+console.log(player1);
+console.log(player2);
+
+//Task 2
+const [gk, ...fieldplayers1] = game.players[0];
+const [gk2, ...fieldPlayers2] = game.players[1];
+console.log(gk, fieldplayers1);
+console.log(gk2, fieldPlayers2);
+
+//Task 3
+const [...allPlayers] = [...players1, ...players2];
+console.log(allPlayers);
+
+//Task 4
+const sub = ['Thiago', 'Coutinho', 'Perisic'];
+const players1Final = [...game.players[0], ...sub];
+const players1Finall = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+console.log(players1Final);
+
+//Task 5
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
+console.log(team1, draw, team2);
+
+//Task 6
+const printGoals = function (...players) {
+  console.log(`${players.length} goals were scored `);
+};
+
+printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+
+//Task 7
+team1 < team2 && console.log('Team 1 is likely to win');
+team1 > team2 && console.log('Team 2 is likely to win');
+
+//for-of loop
