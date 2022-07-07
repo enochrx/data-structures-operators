@@ -27,7 +27,7 @@ const restaurant = {
     },
   },
 
-  order: function (starterIndex, mainIndex) {
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.starterMenu[mainIndex]];
   },
 
@@ -311,3 +311,53 @@ team1 < team2 && console.log('Team 1 is likely to win');
 team1 > team2 && console.log('Team 2 is likely to win');
 
 //for-of loop
+const mmenu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+for (const list of mmenu) console.log(list);
+
+for (const [i, el] of mmenu.entries()) {
+  console.log(`${i + 1} : ${el}`);
+}
+//console.log([...mmenu.entries()]);
+
+//Optional Chaining
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon.open);
+
+//using optional chaining '?'
+console.log(restaurant.openingHours.mon?.open);
+
+//Practical application
+const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day}, We're opened by ${open}`);
+}
+
+//optional chaining is a new ES6 feature and it should be used alongside Nullish coalescing operator. It also has its application in calling methods for example
+
+console.log(restaurant.order?.(1, 2)) ?? 'Method does not exist';
+
+//Optional chaining is also very useful in arrays
+const users = [{ name: 'ray', email: 'rayny@sp.io', net: 'billions' }];
+console.log(users[0]?.net ?? 'Empty Array selection');
+
+//Looping Object: Keys, Values and Entries
+//Property NAME
+const prop = Object.keys(openingHours);
+console.log(prop);
+
+let openingMessage = `We are open on ${prop.length} days`;
+for (const day of prop) {
+  openingMessage += `${day}`;
+}
+
+//Property VALUE
+const value = Object.values(openingHours);
+console.log(value);
+
+//Entire object
+const entries = Object.entries(openingHours);
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${day}, we are open by ${open} and close by ${close}`);
+}
