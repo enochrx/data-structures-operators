@@ -388,3 +388,11 @@ console.log(orderSet);
 
 //Sets are also iterable, so we can loop through
 for (const order of orderSet) console.log(order);
+
+//Set--Use case
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiteir'];
+
+const uniqueStaff = new Set(staff);
+console.log(uniqueStaff);
+
+console.log(new Set(staff).size);
