@@ -358,6 +358,33 @@ console.log(value);
 
 //Entire object
 const entries = Object.entries(openingHours);
-for (const [key, { open, close }] of entries) {
+for (const [day, { open, close }] of entries) {
   console.log(`On ${day}, we are open by ${open} and close by ${close}`);
 }
+
+//Introduction to Set --- all values are unique and so no repitition, also there is no need to get data out of Sets as the order in which they are written doesn not matter, all that is necessary is to check ig a value is present or not in a given set. If there is need to get a value out of a Set, then it's rather just easy to use an array instead
+const orderSet = new Set([
+  'Garlic',
+  'Cucumber',
+  'Cucumber',
+  'Citrus',
+  'Cabbage',
+  'Carrot',
+]);
+console.log(orderSet);
+
+//length of set
+console.log(orderSet.size);
+
+//adding to the set
+orderSet.add('Diced Liver');
+
+//to check if a nset has a value--- in arrays = array.include()
+console.log(orderSet.has('Citus'));
+
+//to delete from a set
+orderSet.delete('Citrus');
+console.log(orderSet);
+
+//Sets are also iterable, so we can loop through
+for (const order of orderSet) console.log(order);
