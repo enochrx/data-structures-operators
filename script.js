@@ -396,3 +396,57 @@ const uniqueStaff = new Set(staff);
 console.log(uniqueStaff);
 
 console.log(new Set(staff).size);
+
+//Maps
+const term = new Map();
+term.set('name', 'Spen');
+term.set('open', 12);
+term.set('close', 24);
+term
+  .set('fact', 'establish 2020')
+  .set('yet', "we're not registered")
+  .set(2, 'Raynoic')
+  .set(true, "we're open")
+  .set(false, "we're close");
+console.log(term);
+
+// we us .get method to retrive data from Maps
+console.log(term.get(2));
+console.log(term.get('open'));
+
+//simple use case
+const time = 11;
+console.log(term.get(time > term.get(open) && time < term.get(close)));
+
+//other Map methods
+console.log(term.has('yet'));
+
+console.log(term.size);
+term.delete(2);
+
+console.log(term);
+
+//Other ways of passing data into a Map
+const factPizza = new Map([
+  [
+    'Question',
+    "Where's the best place to get the nicest Pizza and burger in Lagos",
+  ],
+  [1, 'Pizza Hut'],
+  [2, 'Dominos Pizza'],
+  [3, 'Debonairs Pizza'],
+  ['Correct', 3],
+  [true, 'Correct!'],
+  [false, 'Try again!'],
+]);
+
+console.log(factPizza);
+console.log(factPizza.get('Question'));
+
+for (const [key, value] of factPizza) {
+  if (typeof key === 'number') console.log(`Answer ${key} : ${value}`);
+}
+const answer = Number(
+  prompt("Where's the best place to get the nicest Pizza and burger in Lagos")
+);
+console.log(factPizza.get(factPizza.get('Correct') === answer));
