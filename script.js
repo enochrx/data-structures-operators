@@ -606,5 +606,31 @@ console.log(priceUSA);
 //replacing a word in a string
 const ann = 'Please, kindly ensure you use your seatbelt!, use your seatbelt!';
 
+//replaceAll() is use to replace multiple occurences of the word, otherwise , we use 'regular expression'
 console.log(ann.replaceAll('use', 'fasten'));
-//replaceAll() is use to replace multiple occurence of the word
+//Regular expression /use/g -- g = global, and it picks all occurences
+console.log(ann.replace(/use/g, 'fasten'));
+
+//Booleans
+const flight = 'Boeing A345neo';
+console.log(flight.includes('A34'));
+console.log(flight.includes('Airbus'));
+console.log(flight.startsWith('Boe'));
+console.log(flight.endsWith('neo'));
+
+if (flight.startsWith('Boeing') && flight.endsWith('neo')) {
+  console.log('Your flight is a new generation BOEING plane');
+} else console.log("We're not sure of the model of your flight");
+
+//Practice exercise
+const baggageScrutiny = function (items) {
+  const adjusted = items.toLowerCase();
+  if (adjusted.includes('gun') || adjusted.includes('knife')) {
+    console.log('You are not allowed on this flight');
+  } else console.log('Welcome aboard');
+};
+
+baggageScrutiny('I have my gadgets and some waffles and chicken');
+baggageScrutiny('Some luggage of clothes and a GUn');
+baggageScrutiny('A KnIFe and a gUn');
+baggageScrutiny('A pair of sneakers');
