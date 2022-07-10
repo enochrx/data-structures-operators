@@ -362,6 +362,49 @@ for (const [day, { open, close }] of entries) {
   console.log(`On ${day}, we are open by ${open} and close by ${close}`);
 }
 
+/*/////////////////////////
+//Coding Challenge #2
+Let's continue with our football betting app! Keep using the 'game' variable from
+before.
+Your tasks:
+1. Loop over the game.scored array and print each player name to the console,
+along with the goal number (Example: "Goal 1: Lewandowski")
+2. Use a loop to calculate the average odd and log it to the console (We already
+studied how to calculate averages, you can go check if you don't remember)
+3. Print the 3 odds to the console, but in a nice formatted way, exactly like this:
+Odd of victory Bayern Munich: 1.33
+Odd of draw: 3.25
+Odd of victory Borrussia Dortmund: 6.5
+Get the team names directly from the game object, don't hardcode them
+(except for "draw"). Hint: Note how the odds and the game objects have the
+same property names 😉
+4. Bonus: Create an object called 'scorers' which contains the names of the
+players who scored as properties, and the number of goals as the value. In this
+game, it will look like this:
+{
+Gnarby: 1,
+Hummels: 1,
+Lewandowski: 2
+}
+GOOD LUCK 😀*/
+
+//1.
+for (const [x, player] of game.scored.entries())
+  console.log(`Goal ${x + 1} : ${player}`);
+
+//2.
+const values = Object.values(game.odds);
+let average = 0;
+for (const odd of values) average += odd;
+average /= values.length;
+console.log(average);
+
+//3.
+for (const [team, odd] of Object.entries(game.odds)) {
+  const strTeam = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${strTeam} ${odd}`);
+}
+
 //Introduction to Set --- all values are unique and so no repitition, also there is no need to get data out of Sets as the order in which they are written doesn not matter, all that is necessary is to check ig a value is present or not in a given set. If there is need to get a value out of a Set, then it's rather just easy to use an array instead
 const orderSet = new Set([
   'Garlic',
@@ -446,7 +489,122 @@ console.log(factPizza.get('Question'));
 for (const [key, value] of factPizza) {
   if (typeof key === 'number') console.log(`Answer ${key} : ${value}`);
 }
-const answer = Number(
-  prompt("Where's the best place to get the nicest Pizza and burger in Lagos")
-);
+/*const answer = Number(
+  prompt("Where's the best place to get the nicest Pizza and burger in Lagos"));*/
+const answer = 3;
+
 console.log(factPizza.get(factPizza.get('Correct') === answer));
+
+//convert map to arrays
+console.log([...factPizza]);
+console.log(factPizza.entries());
+console.log(factPizza.keys());
+console.log(factPizza.values());
+
+/////////////////////////////////////////
+//Coding CHallenge #3
+/*Let's continue with our football betting app! This time, we have a map called
+'gameEvents' (see below) with a log of the events that happened during the
+game. The values are the events themselves, and the keys are the minutes in which
+each event happened (a football game has 90 minutes plus some extra time).
+Your tasks:
+1. Create an array 'events' of the different game events that happened (no
+duplicates)
+2. After the game has finished, is was found that the yellow card from minute 64
+was unfair. So remove this event from the game events log.
+3. Compute and log the following string to the console: "An event happened, on
+average, every 9 minutes" (keep in mind that a game has 90 minutes)
+4. Loop over 'gameEvents' and log each element to the console, marking
+whether it's in the first half or second half (after 45 min) of the game, like this:
+[FIRST HALF] 17:
+⚽
+GOAL
+GOOD LUCK*/
+const gameEvents = new Map([
+  [17, '⚽ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽ GOAL'],
+  [80, '⚽ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+//1.
+const events = [...gameEvents.values()];
+const eventSet = new Set(events);
+console.log(eventSet);
+
+//2.
+gameEvents.delete(64);
+console.log(gameEvents);
+
+//3.
+console.log(`An event happened, on
+average, every ${90 / gameEvents.size} minutes`);
+
+const timee = [...gameEvents.keys()].pop();
+console.log(`An event happened, on
+average, every ${timee / gameEvents.size} minutes`);
+
+//4.
+for (const [min, event] of gameEvents) {
+  const half = min >= 45 ? 'SECOND' : 'FIRST';
+  console.log(`[${half} HALF] ${min} : ${event} `);
+}
+
+//Working with strings
+const space = 'Elon to the Moon';
+
+//calling some method on the string as JS treats strings as objects in the background
+console.log(space[2]);
+console.log(space.indexOf('o'));
+console.log(space.lastIndexOf('o'));
+console.log(space.slice(5));
+console.log(space.slice(5, 12));
+console.log(space.length);
+
+const seatChecker = function (seat) {
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log('Middle Seat');
+  else console.log('Got lucky');
+};
+seatChecker('32J');
+seatChecker('45E');
+seatChecker('5B');
+seatChecker('28C');
+
+//more on some string methods
+console.log(space.toLowerCase());
+console.log('Elon to the Moon'.toUpperCase());
+
+//Use case --- to fix capitalization
+const passenageName = 'jUDe oReOs';
+const passengerLower = passenageName.toLowerCase();
+const correctName =
+  passenageName[0].toUpperCase() +
+  passengerLower.slice(1, 5) +
+  passenageName[5].toUpperCase() +
+  passengerLower.slice(6);
+console.log(correctName);
+
+//Comparing emails --- intro trim() method
+const email = 'hello@spens.io';
+const inputEmail = ' HellO@sPens.IO \n';
+const correctedEmail = inputEmail.toLowerCase().trim();
+console.log(correctedEmail, correctedEmail === email);
+
+//replacing
+const priceBrit = '574,58E';
+const priceUSA = priceBrit.replace('E', '$').replace(',', '.');
+console.log(priceUSA);
+
+//replacing a word in a string
+const ann = 'Please, kindly ensure you use your seatbelt!, use your seatbelt!';
+
+console.log(ann.replaceAll('use', 'fasten'));
+//replaceAll() is use to replace multiple occurence of the word
