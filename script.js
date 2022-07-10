@@ -634,3 +634,52 @@ baggageScrutiny('I have my gadgets and some waffles and chicken');
 baggageScrutiny('Some luggage of clothes and a GUn');
 baggageScrutiny('A KnIFe and a gUn');
 baggageScrutiny('A pair of sneakers');
+
+//Using Split() --- an array is formed
+console.log('a life abroad is so beautiful'.split(' '));
+const [firstName, lastName] = 'Damilare_olaniran'.split('_');
+
+const mrName = ['Mr', firstName, lastName.toUpperCase()].join(' ');
+console.log(mrName);
+
+//to capitalize first letters of words
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpperCase = [];
+  for (const n of names) {
+    //namesUpperCase.push(n[0].toUpperCase() + n.slice(1));
+    namesUpperCase.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpperCase.join(' '));
+};
+capitalizeName('joan smith anderson miguel');
+capitalizeName('olaniran damilare');
+capitalizeName('dmailola bukola oladejo');
+
+//padding string method
+const me = 'damilare';
+console.log(me.padStart(20, '*'));
+console.log(me.padEnd(20, '#'));
+
+//Padding use case
+const maskedCardNumber = function (number) {
+  const st = number + '';
+  const lastNumber = st.slice(-4);
+  return lastNumber.padStart(st.length, '*');
+};
+console.log(maskedCardNumber(6548418796569495));
+console.log(maskedCardNumber('65896269886365898416'));
+console.log(maskedCardNumber(8236864897));
+
+//repeat() string method
+const mess = 'There will be a delay in flight tskeoff due to bad weather ';
+console.log(mess.repeat(5));
+
+const takeoff = tk => {
+  console.log(
+    `There are about ${tk} of planes waiting to takeoff ${'✈️'.repeat(tk)}`
+  );
+};
+takeoff(5);
+takeoff(10);
+takeoff(2);
